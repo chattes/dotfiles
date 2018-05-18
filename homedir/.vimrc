@@ -1,3 +1,12 @@
+" Custom Config
+set nocompatible              " be iMproved, required
+set number
+set path=$PWD/**
+set wildignore+=*/node_modules/*
+set tags=tags
+set autochdir
+filetype off                  " required
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Must Have
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -13,79 +22,67 @@ else
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
+" PLug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set completeopt=longest,menuone
+call plug#begin('~/vim/plugged')
+if has('nvim')
+				Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+				Plug 'Shougo/deoplete.nvim'
+				Plug 'roxma/nvim-yarp'
+				Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'KabbAmine/zeavim.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'mtth/scratch.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'vimlab/neojs'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'dhruvasagar/vim-zoom'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'nightsense/vim-crunchbang'
+Plug 'tomasr/molokai'
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Raimondi/delimitMate'
+Plug 'gavocanov/vim-js-indent'
+Plug 'Sirver/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'gmarik/ingretu'
+Plug 'ervandew/supertab'
+Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'altercation/vim-colors-solarized'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-scripts/Txtfmt-The-Vim-Highlighter'
+Plug 'moll/vim-node'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
+Plug 'mxw/vim-jsx'
+Plug 'plasticboy/vim-markdown'
+Plug 'groenewege/vim-less'
+Plug 'xolox/vim-easytags'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-endwise'
+Plug 'slashmili/alchemist.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'Valloric/MatchTagAlways'
+Plug 'alvan/vim-closetag'
+Plug 'machakann/vim-highlightedyank'
+call plug#end()
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Keep Plugin commands between vundle#begin/end.
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-" Plugin 'Valloric/YouCompleteMe'
-" Navigation (IDE frame)
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'justinmk/vim-sneak'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-surround'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'editorconfig/editorconfig-vim'
-" visual undo list
-Plugin 'sjl/gundo.vim'
-" Plugin 'majutsushi/tagbar'
-" markdown preview: opens browser with live reload when vim opens .md
-Plugin 'suan/vim-instant-markdown'
-Plugin 'godlygeek/tabular'
-" language tools
-Plugin 'scrooloose/syntastic'
-Plugin 'millermedeiros/vim-esformatter'
-Plugin 'digitaltoad/vim-pug'
-" Plugin 'elzr/vim-json'
-" Plugin 'SirVer/ultisnips'
-"Plugin 'sheerun/vim-polyglot'
-" plugins from http://vim-scripts.org/vim/scripts.html
-Plugin 'node.js'
-Plugin 'SuperTab'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-" TypeScript
-Plugin 'leafgarland/typescript-vim'
-" Vue.js
-Plugin 'posva/vim-vue'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set UTF-8 encoding
 set enc=utf-8
 set fenc=utf-8
@@ -186,21 +183,7 @@ set foldmethod=marker " Fold on the marker
 set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen-=search " don't open folds when you search into them
 set foldopen-=undo " don't open folds when you undo stuff
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTags
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let Tlist_Ctags_Cmd = 'ctags' " Location of ctags
-"let Tlist_Sort_Type = "name" " order by
-"let Tlist_Use_Right_Window = 1 " split to the right side of the screen
-"let Tlist_Compact_Format = 1 " show small meny
-"let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
-"let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
-"let Tlist_Enable_Fold_Column = 1 " Do show folding tree
-"let Tlist_WinWidth = 50 " 50 cols wide, so I can (almost always) read my functions
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Matchit
+"  Matchit
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let b:match_ignorecase = 1
 
@@ -217,17 +200,7 @@ function! SuperRetab(width) range
     silent! exe a:firstline . ',' . a:lastline . 's/\v%(^ *)@<= {'. a:width .'}/\t/g'
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <up> <ESC>:bp<RETURN> " left arrow (normal mode) switches buffers
-" map <down> <ESC>:bn<RETURN> " right arrow (normal mode) switches buffers
-" map <right> <ESC>:Tlist<RETURN> " show taglist
-" map <left> <ESC>:NERDTreeToggle<RETURN>  " moves left fa split
-" map <F2> <ESC>ggVG:call SuperRetab()<left>
-" map <F12> ggVGg? " apply rot13 for people snooping over shoulder, good fun
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " Useful abbrevs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
@@ -271,7 +244,6 @@ vnoremap <silent> <leader>es :EsformatterVisual<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 " auto open if no file sent as arg
 autocmd StdinReadPre * let s:std_in=1
@@ -306,3 +278,115 @@ let g:syntastic_pug_checkers = ['jade','pug']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sneak#streak = 1
 let g:airline_theme='bubblegum'
+
+
+let g:deoplete#enable_at_startup = 1
+" To map <Esc> to exit terminal-mode:
+if has('nvim')
+    :tnoremap <Esc> <C-\><C-n>
+    nnoremap <C-o><C-t> :below 10sp term://$SHELL<cr>i
+    set inccommand=split
+endif
+
+tnoremap ii <C-\><C-n>
+tnoremap <C-w><C-h> <C-\><C-N><C-w>h
+tnoremap <C-w><C-j> <C-\><C-N><C-w>j
+tnoremap <C-w><C-k> <C-\><C-N><C-w>k
+tnoremap <C-w><C-l> <C-\><C-N><C-w>l
+
+
+imap <C-c> <CR><Esc>O
+imap ii <Esc>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set backspace=indent,eol,start
+" make YCM compatible with UltiSnips (using supertab)
+let g:UltiSnipsSnippetDirectories=['~/.local/share/nvim/plugged/vim-snippets/UltiSnips', 'UltiSnips']
+let g:used_javascript_libs='underscore,ramda,react,jquery'
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"Auto Close YCMD Hints and Semantics
+let g:jsx_ext_required = 0
+let g:nerdtree_tabs_open_on_console_startup=0
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:ale_sign_error = '>' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
+"Tag completion
+:iabbrev </ </<C-X><C-O>
+"Nerdtree Shortcut mapping
+map <silent> <C-t> :NERDTreeToggle<ENTER>
+map <silent> <C-e> :Errors
+map <silent> <C-n><C-h> :noh
+"CtrlP Settings
+let g:ctrlp_working_path_mode = 'ra'
+" Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$\|build\|public',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+"Syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list = 1
+" Emmet Configuration
+let g:user_emmet_leader_key='<C-E>'
+
+let g:user_emmet_settings = {
+												\  'javascript.jsx' : {
+												\      'extends' : 'jsx',
+												\  },
+												\}
+let g:syntastic_javascript_checkers = ['eslint']
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --no-semi --jsx-bracket-same-line'
+" Match tag types
+let g:mta_filetypes = {
+												\ 'html' : 1,
+												\ 'xhtml' : 1,
+												\ 'xml' : 1,
+												\ 'jinja' : 1,
+												\ 'jsx'    : 1,
+												\ 'javascript': 1
+												\}
+"Auto close tags including jsx
+"-----------------------------
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+" Shortcut for closing tags, default is '>'
+" "
+let g:closetag_shortcut = '>'
+
+"Script to autoclose NERDTree side pane
+"--------------------------------------
+function! s:CloseIfOnlyControlWinLeft()
+				if winnr("$") != 1
+								return
+				endif
+				if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+																\ || &buftype == 'quickfix'
+								q
+				endif
+endfunction
+augroup CloseIfOnlyControlWinLeft
+				au!
+				au BufEnter * call s:CloseIfOnlyControlWinLeft()
+augroup END
+
+" Tab Coloring
+:hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+:hi TabLine ctermfg=Blue ctermbg=Yellow
+:hi TabLineSel ctermfg=Red ctermbg=Yellow
